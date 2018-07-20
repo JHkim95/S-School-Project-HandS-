@@ -2,51 +2,59 @@ import cv2
 import numpy as np
 import math
 
-cap = cv2.VideoCapture(1)
+cap = cv2.VideoCapture(0)
 
 while True:
     ret, frame = cap.read()
-    frame = cv2.GaussianBlur(frame, (45, 45), 5)
+    frame = cv2.resize(frame, (800, 600))
+    frame = cv2.GaussianBlur(frame, (31, 31), 5)
     hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
 
-    lower_skin = np.array([0,40,60])
-    upper_skin = np.array([20,150,255])
-    mask_skin = cv2.inRange(hsv, lower_skin, upper_skin)                #손이라고 판단되는 색 영역만 걸러내는 mask.
-    res_skin = cv2.bitwise_and(frame, frame, mask = mask_skin)
+    mask_Red = cv2.inRange(hsv, np.array([153, 100, 100]), np.array([179, 255, 255]))
+    mask_Blk = cv2.inRange(hsv, np.array([0, 0, 200]), np.array([360, 50, 255]))
 
-    thresh = cv2.threshold(mask_skin, 15, 255, cv2.THRESH_BINARY)[1]
+    res_Red = cv2.bitwise_and(frame, frame, mask = mask_Red)
+    res_Blk = cv2.bitwise_and(frame, frame, mask = mask_Blk)
+
+    thresh = cv2.threshold(mask_Red, 15, 255, cv2.THRESH_BINARY)[1]
     contours = cv2.findContours(thresh.copy(), cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)[1]
-    if not contours:
-        key = cv2.waitKey(1)&0xFF
-        if key == ord("q"):
-            break
-        cv2.imshow("2", frame)
-        
-    else:
-        cnts = max(contours, key = lambda x: cv2.contourArea(x))        #손의 굴곡진 영역까지을 잡아주는? 비슷한 느낌.
-#   cnts = list(filter(lambda x: cv2.contourArea(x), contours))
-#   (x, y, w, h) = cv2.boundingRect(cnts)
-#   cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 0, 255), 0)
+    thresh1 = cv2.threshold(mask_Blk, 15, 255, cv2.THRESH_BINARY)[1]
+    contours1 = cv2.findContours(thresh1.copy(), cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)[1]
 
-    hull = cv2.convexHull(cnts)                                         #손의 최외각 영역을 잡아주는? 그런 느낌.
-    cv2.drawContours(frame, [cnts], 0, (0, 255, 0), 0)                  #색을 칠해준다.
-    cv2.drawContours(frame, [hull], 0, (0, 0, 255), 0)                  #색을 칠해준다. 순서는 BGR이다.
+    if not contours:
+        pass
+    else:
+        cnts = max(contours, key = lambda x : cv2.contourArea(x))
+        x, y, w, h = cv2.boundingRect(cnts)
+        cv2.rectangle(frame, (x, y), (x+w, y+h), (0,0,255), 5)
+        print(x)
+        print(y)
+        print(x+w)
+        print(y+h)
+        cen_x = (x + x + w)/2
+        cen_y = (y + y + h)/2
+        print(cen_x)
+        print(cen_y)
+        if cen_x <= 200 :
+            print("left")
+        elif cen_x >= 600:
+            print("right")
+        print("================")
+
+    if not contours1:
+        pass
+    else:
+        cnts1 = max(contours1, key = lambda x1 : cv2.contourArea(x1))
+        x1, y1, w1, h1 = cv2.boundingRect(cnts1)
+        cv2.rectangle(frame, (x1, y1), (x1+w1, y1+h1), (0,255,0), 5)
 
     key = cv2.waitKey(1)&0xFF
-    if key == ord("q"):
-        break                                                           #q를 누를시 실행 종료.
+    if key == 27:
+        break
 
-#    cv2.imshow("1", res_skin)
-#    cv2.imshow("3", mask_skin)
-    cv2.imshow("2", frame)
-#    cv2.imshow("4", thresh)
+    cv2.imshow("1", res_Blk)
+    cv2.imshow("2", res_Red)
+    cv2.imshow("3", frame)
 
-camera.release()
-cv2.destoryAllWindows()
-
-####용도####
-#손을 제외한 부분을 검은색으로 처리하고, 손이라고 추측이 되는 부분만 추출(색으로 구별)
-#손 하나만 추적
-
-####문제점####
-#조도에 따른 변화를 감지 못함.
+cap.release()
+cv2.destroyAllWindows()
