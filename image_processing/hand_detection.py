@@ -40,17 +40,17 @@ while True:
         cen_y = (2*y + h) / 2
 
         if cen_x < left_3:
-            data = -3
-        elif left_3 <= cen_x < left_2:
-            data = -2
-        elif left_2 <= cen_x < left_1:
-            data = -1
-        elif right_1 < cen_x <= right_2:
-            data = 1
-        elif right_2 < cen_x <= right_3:
-            data = 2
-        elif right_3 < cen_x:
             data = 3
+        elif left_3 <= cen_x < left_2:
+            data = 2
+        elif left_2 <= cen_x < left_1:
+            data = 1
+        elif right_1 < cen_x <= right_2:
+            data = -1
+        elif right_2 < cen_x <= right_3:
+            data = -2
+        elif right_3 < cen_x:
+            data = -3
         else:
             data = 7
 
