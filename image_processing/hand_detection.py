@@ -9,11 +9,11 @@ right_3 = 700
 right_2 = 600
 right_1 = 500
 
-direction = 0
-forward = 0
-backward = 0
-breaker = 0
-total_data = []
+direction = "00"
+forward = "00"
+backward = "00"
+breaker = "00"
+total_data = ""
 
 cap = cv2.VideoCapture(1)
 
@@ -35,8 +35,8 @@ while True:
     contours1 = cv2.findContours(thresh1.copy(), cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)[1]
 
     if not contours:
-        direction = 0
-        forward = 0
+        direction = "00"
+        forward = "00"
         pass
     else:
         cnts = max(contours, key = lambda x : cv2.contourArea(x))
@@ -45,41 +45,38 @@ while True:
         cen_x = (2*x + w) / 2
         cen_y = (2*y + h) / 2
 
-        forward = 1
+        forward = "+1"
 
         if cen_x < left_3:
-            direction = 3
+            direction = "+3"
         elif left_3 <= cen_x < left_2:
-            direction = 2
+            direction = "+2"
         elif left_2 <= cen_x < left_1:
-            direction = 1
+            direction = "+1"
         elif right_1 < cen_x <= right_2:
-            direction = -1
+            direction = "-1"
         elif right_2 < cen_x <= right_3:
-            direction = -2
+            direction = "-2"
         elif right_3 < cen_x:
-            direction = -3
+            direction = "-3"
         else:
-            direction = 0
+            direction = "00"
 
     if not contours1:
-        backward = 0
+        backward = "00"
         pass
     else:
         cnts1 = max(contours1, key = lambda x1 : cv2.contourArea(x1))
         x1, y1, w1, h1 = cv2.boundingRect(cnts1)
         cv2.rectangle(frame, (x1, y1), (x1+w1, y1+h1), (0,255,0), 5)
-        backward = 1
+        backward = "+1"
 
-    if (forward == 0) & (backward == 0) & (direction == 0):
-        breaker = 1
+    if (forward == "00") & (backward == "00") & (direction == "00"):
+        breaker = "+1"
     else:
-        breaker = 0
+        breaker = "00"
 
-    total_data.append(forward)
-    total_data.append(backward)
-    total_data.append(direction) 
-    total_data.append(breaker)
+    total_data = forward + backward + direction + breaker
 
     key = cv2.waitKey(1)&0xFF
     if key == 27:
@@ -94,9 +91,6 @@ while True:
     print(breaker)
     print(total_data)
     print("==================")
-
-    for i in range(0,4):
-        total_data.pop()
 
 cap.release()
 cv2.destroyAllWindows()
