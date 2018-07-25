@@ -1,6 +1,7 @@
 import cv2
 import numpy as np
 import math
+import socket
 
 left_3 = 100
 left_2 = 200
@@ -14,6 +15,14 @@ forward = "00"
 backward = "00"
 breaker = "00"
 total_data = ""
+
+host = ''
+port = 
+buf = 
+ADDR = (host, port)
+
+client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+client.connect(ADDR)
 
 cap = cv2.VideoCapture(1)
 
@@ -77,6 +86,8 @@ while True:
         breaker = "00"
 
     total_data = forward + backward + direction + breaker
+
+    client.send(total_data.encode())
 
     key = cv2.waitKey(1)&0xFF
     if key == 27:
