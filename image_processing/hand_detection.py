@@ -2,7 +2,15 @@ import cv2
 import numpy as np
 import math
 
+left_3 = 100
+left_2 = 200
+left_1 = 300
+right_3 = 700
+right_2 = 600
+right_1 = 500
+
 cap = cv2.VideoCapture(0)
+data = 0
 
 while True:
     ret, frame = cap.read()
@@ -22,24 +30,29 @@ while True:
     contours1 = cv2.findContours(thresh1.copy(), cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)[1]
 
     if not contours:
+        data = 8
         pass
     else:
         cnts = max(contours, key = lambda x : cv2.contourArea(x))
         x, y, w, h = cv2.boundingRect(cnts)
         cv2.rectangle(frame, (x, y), (x+w, y+h), (0,0,255), 5)
-        print(x)
-        print(y)
-        print(x+w)
-        print(y+h)
-        cen_x = (x + x + w)/2
-        cen_y = (y + y + h)/2
-        print(cen_x)
-        print(cen_y)
-        if cen_x <= 200 :
-            print("left")
-        elif cen_x >= 600:
-            print("right")
-        print("================")
+        cen_x = (2*x + w) / 2
+        cen_y = (2*y + h) / 2
+
+        if cen_x < left_3:
+            data = 3
+        elif left_3 <= cen_x < left_2:
+            data = 2
+        elif left_2 <= cen_x < left_1:
+            data = 1
+        elif right_1 < cen_x <= right_2:
+            data = 4
+        elif right_2 < cen_x <= right_3:
+            data = 5
+        elif right_3 < cen_x:
+            data = 6
+        else:
+            data = 7
 
     if not contours1:
         pass
@@ -55,6 +68,8 @@ while True:
     cv2.imshow("1", res_Blk)
     cv2.imshow("2", res_Red)
     cv2.imshow("3", frame)
+    print(data)
+    print("==================")
 
 cap.release()
 cv2.destroyAllWindows()
