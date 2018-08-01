@@ -16,18 +16,20 @@ backward = "00"
 breaker = "00"
 total_data = ""
 
-host = ''
-port = 
-buf = 
-ADDR = (host, port)
+#host = '192.168.1.105'
+#port = 5000
+#buf = 8
+#ADDR = (host, port)
 
-client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-client.connect(ADDR)
+#client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+#client.connect(ADDR)
 
 cap = cv2.VideoCapture(1)
 
 while True:
     ret, frame = cap.read()
+    if ret is False:
+    	print("1")
     frame = cv2.resize(frame, (800, 600))
     frame = cv2.GaussianBlur(frame, (31, 31), 5)
     hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
@@ -87,14 +89,14 @@ while True:
 
     total_data = forward + backward + direction + breaker
 
-    client.send(total_data.encode())
+#    client.send(total_data.encode())
 
     key = cv2.waitKey(1)&0xFF
     if key == 27:
         break
 
-    cv2.imshow("1", res_Blk)
-    cv2.imshow("2", res_Red)
+    #cv2.imshow("1", res_Blk)
+    #cv2.imshow("2", res_Red)
     cv2.imshow("3", frame)
     print(forward)
     print(backward)
