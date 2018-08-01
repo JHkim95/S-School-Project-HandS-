@@ -82,7 +82,7 @@ class LeapMotionListener(Leap.Listener):
                 direction = "-1"
               elif(right_1<roll1<=right_2):
                 direction = "-2"
-              elif(right_3<=roll1):
+              elif(right_2<roll1):
                 direction = "-3"
               else:
                 direction = "00"
@@ -93,54 +93,13 @@ class LeapMotionListener(Leap.Listener):
                 direction = "+1"
               elif(left_1<roll2<=left_2):
                 direction = "+2"
-              elif(left_3<=roll2):
+              elif(left_2<roll2):
                 direction = "+3"
               else:
                 direction = "00"
       total_data = forward + backward + direction + breaker
       print total_data
-
-
-
-
-    
-def count_fingers(self, controller):
-  #Check to see if the Leap Motion senses a hand
-  hands = controller.frame().hands
-  total = 0
-
-  #if a hand is visible, grab the fingers on that hand
-  if hands:
-    if len(hands) >= 2:
-      total += len(hands[1].fingers)
-    total += len(hands[0].fingers)
-    return total
-
-def average_num_fingers(self, controller):
-  values = []
-  for _ in range(1200):
-    values.append(self.count_fingers(controller))
-
-  temp = values[0]
-  if values.count(temp) > 1000:
-    return temp
-
-
-def shift_back(l):
-    #shifts the elements in list l back by 1 index
-    for i in range(len(l)-1)[::-1]:
-        l[i+1] = l[i]
-    
-def sign(hand, num_fingers):
-    fingers = hand.fingers
-    if num_fingers > 3:
-        return 'paper'
-
-    #depending on the orientation of the hand, sometimes the Leap only detects one finger, so this takes care of that case as well.
-    if num_fingers > 1 or (num_fingers == 1 and fingers[0].length() > 50):
-        return 'scissors'
-    return 'rock'
-
+      
 
 def main():
     # Create a sample listener and controller
