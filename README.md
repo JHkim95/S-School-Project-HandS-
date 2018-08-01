@@ -7,6 +7,7 @@
          
 **Leap**
 - Windows에서 진행
+- 비주얼라이저 끈 상태로 실행
 1. 이전버전 sdk 다운 => 설치
 https://developer.leapmotion.com/sdk/v2
 
