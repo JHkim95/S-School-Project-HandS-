@@ -34,7 +34,7 @@ https://developer.leapmotion.com/sdk/v2
 - leapmotion을 양손 중앙에 놓고 실행.
 
 - 왼손 : forward, backward, break 조절
-	-  손  상태로 특정 높이를 기준으로 forward, backward 구분
+	-  손 편 상태로 특정 높이를 기준으로 forward, backward 구분
 	- 주먹 쥐면 break
 - 오른 손 : 방향조절(left+3~right+3)
 	- 핸들 조절하듯 손 전체로 반원 그리면 됨.
