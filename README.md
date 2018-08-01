@@ -6,5 +6,44 @@
 - 사용자용 장갑 설계(재질,색깔,모양 등)
          
 **Leap**
-* leap 폴더 안에 존재하는 모든 파일이 있어야 한 폴더 내에  import Leap 사용 가능.
-* sample.py 실행시켜 확인해 볼 것. 
+**Windows에서 진행바람**
+1. 이전버전 sdk 다운 => 설치
+https://developer.leapmotion.com/sdk/v2
+
+2. Python27 bit확인
+-> 32bit : LeapSDK/lib/x86 사용
+-> 64bit : LeapSDK/lib/x64 사용
+
+3. leap 폴더추가 : ~path/Python27/leap
+- leap폴더에 아래 파일들 저장
+	1) Leap(LeapSDK/lib에 존재)
+	2) Leap.dll (LeapSDK/lib/x86 or x64 에 존재)
+	3) Leap (LeapSDK/lib/x86 or x64 에 존재)
+	4) LeapPython(LeapSDK/lib/x86 or x64 에 존재)
+	5) Sample.py(LeapSDK/samples에 존재)
+	6) leapimg.py(git에 존재 - 이미지처리)
+- ~ .py 파일들 실행.
+
+4. Sample.py 실행 
+-안되면 못돌림...............
+-cmd로 돌릴것.(python leap/Sample.py)
+- 64bit으로 실행 안되면 32bit으로 
+
+5. leapimg.py 실행
+
+- leapmotion을 양손 중앙에 놓고 실행.
+
+- 왼손 : forward, backward, break 조절
+	-  손 핀 상태로 특정 높이를 기준으로 forward, backward 구분
+	- 주먹 쥐면 break
+- 오른 손 : 방향조절(left+3~right+3)
+	- 핸들 조절하듯 손 전체로 반원 그리면 됨.
+	
+-print값 : total_data 
+
+cf.  방향 이상하면 코드 수정.
+
+
+
+
+
