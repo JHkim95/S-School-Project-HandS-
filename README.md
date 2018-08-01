@@ -6,7 +6,7 @@
 - 사용자용 장갑 설계(재질,색깔,모양 등)
          
 **Leap**
-**Windows에서 진행바람**
+- Windows에서 진행
 1. 이전버전 sdk 다운 => 설치
 https://developer.leapmotion.com/sdk/v2
 
