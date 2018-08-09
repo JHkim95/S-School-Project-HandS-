@@ -1,6 +1,6 @@
 import Leap, sys, math
 from Leap import *
-
+import socket
 
 left_3 = 90
 left_2 = 50
@@ -99,6 +99,7 @@ class LeapMotionListener(Leap.Listener):
                 direction = "00"
       total_data = forward + backward + direction + breaker
       print total_data
+      #client.send(total_data.encode())
       
 
 def main():
