@@ -56,3 +56,6 @@ cf.  방향 이상하면 코드 수정.
 3. Go to /usr/bin or /usr/sbin.
 4. $ sudo leapd
 5. $ python Sample.py or $ python leapimg.py
+
+>>![example2](https://user-images.githubusercontent.com/36954727/44376796-04f7d280-a535-11e8-8414-cfaa66760738.jpeg)
+>>Success!
