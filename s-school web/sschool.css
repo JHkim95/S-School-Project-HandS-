@@ -1,0 +1,140 @@
+.page-header {
+   	color : #FF0600;
+    margin-top: 0;
+    padding: 20px 20px 20px 40px;
+    text-align: center;
+
+}
+
+.page-header h1, .page-header h1 a, .page-header h1 a:visited, .page-header h1 a:active {
+    font-size: 36pt;
+    text-decoration: none;
+    color : #FF0600;
+}
+
+
+
+.top {
+    padding: 20px 20px 15px 40px;
+    text-align: center;
+    width: 500px;
+    height: 140px;
+    margin : 10px auto;
+    background-color: black;
+    border-radius: 5px;
+    
+}
+
+.top div{
+
+    text-align: center;
+    width: 140px;
+    height: 140px;
+    float : left;
+    margin : 0px 10px 10px 10px;
+    border-radius: 50%;
+    line-height: 140px;
+    color : white;
+    font-size: 30pt;
+    font-family: 'Hanna';
+}
+
+
+#one{
+    background-color: #FF0600;
+    opacity: 0.3; 
+
+}
+
+
+#two
+{
+    background-color: #FFFF01;
+    opacity: 0.3; 
+}
+
+
+#three
+{
+    background-color: #0000FE;
+    opacity: 0.3; 
+    
+}
+/*
+.three.black
+{
+    background-color: #0000FE;
+    opacity: 0.3; 
+    
+}*/
+
+h1 
+{
+    font-family: 'Hanna';
+}
+
+
+
+.top h1, .top h2, .bottom h1{
+    color : white;
+    font-family: 'Hanna';
+}
+
+.bottom{
+    padding: 20px 20px 30px 40px;
+    text-align: center;
+    width: 500px;
+    height: 100px;
+    margin : 10px auto;
+    border-radius: 5px;
+    background-color: black;
+    
+}
+
+
+.bottom div{
+
+    text-align: center;
+    width: 150px;
+    height: 120px;
+    float : left;
+    margin : 10px 20px 20px 30px;
+    border-radius: 5px;
+    color : white;
+
+}
+
+
+#left
+{
+    width: 50px;
+    height: 50px;
+    border-top: 40px solid #FFFF01;
+    border-right: 40px solid #FF0600;
+    transform: rotate(225deg);
+    opacity: 0.2;
+}
+
+#right
+{
+    width: 50px;
+    height: 50px;
+    border-top: 40px solid #FFFF01;
+    border-right: 40px solid #0000FE;
+    transform: rotate(45deg);
+    opacity: 0.2;
+    
+}
+
+
+#speed
+{
+
+}
+body
+{
+	background-color:#ffffff;
+}
+
+
+
