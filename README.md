@@ -4,6 +4,12 @@
 - 공유기 구매이후 라즈베리파이 ip 고정
 - 스트리밍 테스트 및 추가 라즈베리파이 구매여부 결정
 - 사용자용 장갑 설계(재질,색깔,모양 등)
+
+**웹**
+(leapmotion 연결 )
+1. s-school web 다운
+2. 서브라임으로 testleap.html 실행 
+3. ctrl+B 
          
 **Leap**
 - Windows에서 진행
