@@ -6,6 +6,7 @@
 - 사용자용 장갑 설계(재질,색깔,모양 등)
 
 **웹**
+(http://ssss0902.pythonanywhere.com/ 파일이랑은 다른 파일임. 좀더 간단한게 확인가능.)
 (leapmotion 연결 )
 1. s-school web 다운
 2. 서브라임으로 testleap.html 실행 
