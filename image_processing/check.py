@@ -10,13 +10,13 @@ forward = "0"
 total_data = ""
 
 
-host = '192.168.0.8'
+host = '192.168.1.103'
 port = 5050
 buf = 8
 ADDR = (host, port)
 
-#client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-#client.connect(ADDR)
+client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+client.connect(ADDR)
 
 
 
@@ -67,7 +67,6 @@ class LeapMotionListener(Leap.Listener):
       else:
         circle = CircleGesture(gesture)
         print("T")
-
     """
 
     for hand in frame.hands:
@@ -82,18 +81,21 @@ class LeapMotionListener(Leap.Listener):
             dist = hand_center.y
 
             #not consider acc 
-            if(dist<=100):
+            if(dist<=150):
               #print "forward"
-              forward = "0"
+              forward = "0"  #FAST FORWARD
               #backward = "00"
+            elif(150<dist<=250):
+              forward = "1" #SLOW FORWARD
+            elif(250<dist<=350):
+              #print "backward" 
+              forward = "2" #SLOW BACKWARD
+              #backward = "+1" 
             else :
-              #print "backward"
-              forward = "1"
-              #backward = "+1"
-
+              forward = "3" #FAST BACKWARD
           if (hand.grab_strength==1):
             #print "Rock"
-            forward = "2"
+            forward = "4" #STOP
       else :
         #print "Right"
         if (hand.grab_strength==0):
@@ -119,7 +121,7 @@ class LeapMotionListener(Leap.Listener):
 
       total_data = forward + direction
       print total_data
-      #client.send(total_data.encode())
+      client.send(total_data.encode())
       
       
 
@@ -146,5 +148,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
