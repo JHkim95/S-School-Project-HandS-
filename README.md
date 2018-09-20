@@ -55,7 +55,7 @@ cf.  방향 이상하면 코드 수정.
 
 **실행 방법**
 1. PuTTY로 라즈베리파이에 접속.
-2. cd Sunfounder_Smart_Video_Car_Kit_for_RaspberryPi/server 
+2. cd Sschool/Sunfounder_Smart_Video_Car_Kit_for_RaspberryPi/server 
 3. sudo python main2.py
 4. Leap.py 실행 
 
