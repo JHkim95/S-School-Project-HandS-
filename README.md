@@ -68,3 +68,17 @@ cf.  방향 이상하면 코드 수정.
 
 >>![example2](https://user-images.githubusercontent.com/36954727/44376796-04f7d280-a535-11e8-8414-cfaa66760738.jpeg)
 >>Success!
+
+**작동방식 최종**
+1. 립모션 연결, LeapSDK 2.3.1 다운로드하기
+  
+2. cmd(1) -> cd /usr/bin  
+          -> sudo leapd
+	    
+3. cmd(2) -> putty or ssh 로 라즈베리파이 접속
+          -> cd Sschool/Sunfounder_Smart_Video_Car_Kit_for_RaspberryPi/server
+	  -> python Smain.py (모터 제어 코드)
+	    
+4. cmd(3) -> cd LeapDeveloperKit_2.3.1+31549_linux/LeapSDK/samples
+          -> samples 디렉토리에 check.py(제스쳐 인식코드) 넣기
+	  -> python check.py
