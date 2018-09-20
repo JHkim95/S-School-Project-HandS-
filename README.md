@@ -37,7 +37,7 @@
 3. cmd(2)   
   -> putty or ssh 로 라즈베리파이 접속    
   -> cd Sschool/Sunfounder_Smart_Video_Car_Kit_for_RaspberryPi/server    
-  -> python Smain.py (모터 제어 코드)
+  -> python Smain2.py (모터 제어 코드)
 	    
 4. cmd(3)   
   -> cd LeapDeveloperKit_2.3.1+31549_linux/LeapSDK/samples  
