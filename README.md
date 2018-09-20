@@ -6,7 +6,31 @@
 (LED : 운행/정지를 녹색/적색과 같이 간단히 표시)
 - 립모션 코드 실행하여 손동작 편리하게끔 최적화/수정  
 - 전시회장 맵 및 장애물 제작 관련 회의  
+  
+**제스쳐 인식 방식**  
+왼손(보자기)   : 수직 Depth를 이용하여 전진(립모션과 가까이), 후진(멀리)  
 
+왼손(주먹)     : 정지  
+
+오른손(보자기) : 평행 좌우이동으로 자동차의 다섯가지 조향제어(좌로 2단계,전진, 우로 2단계)  
+  
+**우분투 작동방식 최종**
+1. 립모션 연결, LeapSDK 2.3.1 다운로드하기
+  
+2. cmd(1)   
+  -> cd /usr/bin  
+  -> sudo leapd
+	    
+3. cmd(2)   
+  -> putty or ssh 로 라즈베리파이 접속    
+  -> cd Sschool/Sunfounder_Smart_Video_Car_Kit_for_RaspberryPi/server    
+  -> python Smain.py (모터 제어 코드)
+	    
+4. cmd(3)   
+  -> cd LeapDeveloperKit_2.3.1+31549_linux/LeapSDK/samples  
+  -> samples 디렉토리에 check.py(제스쳐 인식코드) 넣기    
+  -> python check.py  
+    
 **웹**
 (http://ssss0902.pythonanywhere.com/ 파일이랑은 다른 파일임. 좀더 간단한게 확인가능.)
 (leapmotion 연결 )
@@ -86,9 +110,4 @@ cf.  방향 이상하면 코드 수정.
   -> samples 디렉토리에 check.py(제스쳐 인식코드) 넣기    
   -> python check.py
 
-
-**제스쳐 인식 방식**  
-왼손(보자기) : 수직 Depth를 이용하여 전진(립모션과 가까이), 후진(멀리)  
-왼손(주먹) : 정지  
-오른손(보자기) : 평행 좌우이동으로 자동차의 다섯가지 조향제어(좌로 2단계,전진, 우로 2단계)  
 
