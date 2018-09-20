@@ -47,38 +47,42 @@ while True:
 		#		time.sleep(0.01)
 
 
-		if (forward == "0") :
-			speed = 20
+		if (forward == "0") :   
+			speed = 50
 			motor.setSpeed(speed)
 			motor.forward()
 
-		if (forward =="1"):
-			speed = 20
+		if (forward == "1") :   
+			speed = 250
+			motor.setSpeed(speed)
+			motor.forward()
+
+		if (forward =="2"):
+			speed = 25
 			motor.setSpeed(speed)
 			motor.backward()
 
-		if forward == "2":
+		if (forward == "3") :   
+			speed = 50
+			motor.setSpeed(speed)
+			motor.backward()
+
+		if forward == "4":
 			motor.stop()
 
 		if direction == "0":
 			servo_test.pwm.write(0, 0, 300)
 
 		if direction == "1":
-			servo_test.pwm.write(0, 0, 360)
+			servo_test.pwm.write(0, 0, 400)
 
 		if direction == "2":
-			servo_test.pwm.write(0, 0, 420)
-
-		if direction == "3":
 			servo_test.pwm.write(0, 0, 500)
 
+		if direction == "3":
+			servo_test.pwm.write(0, 0, 600)
+
 		if direction == "4":
-			servo_test.pwm.write(0, 0, 580)
-
-		if direction == "5":
-			servo_test.pwm.write(0, 0, 640)
-
-		if direction == "6":
 			servo_test.pwm.write(0, 0, 700)
 
 
