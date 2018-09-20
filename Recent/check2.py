@@ -11,7 +11,7 @@ total_data = ""
 
 
 host = '192.168.1.103'
-port = 5077
+port = 5104
 buf = 2
 ADDR = (host, port)
 
@@ -89,9 +89,9 @@ class LeapMotionListener(Leap.Listener):
               #backward = "00"
             elif(180<dist<=380):
               forward = "1"  
-            elif(380<dist<=420):
+            elif(380<dist<=400):
               forward = "5"
-            elif(420<dist<=550):
+            elif(400<dist<=520):
               #print "backward" 
               forward = "2"  
               #backward = "+1" 
@@ -100,9 +100,9 @@ class LeapMotionListener(Leap.Listener):
 
             if handx <= (-100):
               direction = "0"
-            elif handx <= (-50):
+            elif handx <= (-35):
               direction = "1"
-            elif handx <= 50:
+            elif handx <= 35:
               direction="2"
             elif handx <= 100:
               direction = "3"
@@ -117,9 +117,9 @@ class LeapMotionListener(Leap.Listener):
 
             if handx <= (-100):
               direction = "0"
-            elif handx <= (-50):
+            elif handx <= (-35):
               direction = "1"
-            elif handx <= 50:
+            elif handx <= 35:
               direction="2"
             elif handx <= 100:
               direction = "3"
