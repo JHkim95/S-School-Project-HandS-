@@ -26,6 +26,7 @@
   
 오른손(주먹)  
 - 정지  
+- 정지한 채로 조향 가능  
   
 **우분투 작동방식 최종**
 1. 립모션 연결, LeapSDK 2.3.1 다운로드하기
@@ -35,7 +36,7 @@
   -> sudo leapd
 	    
 3. cmd(2)   
-  -> putty or ssh 로 라즈베리파이 접속    
+  -> putty or ssh 로 라즈베리파이 접속(192.168.0.6 안되면 내부네트워크 확인)    
   -> cd Sschool/Sunfounder_Smart_Video_Car_Kit_for_RaspberryPi/server    
   -> python Smain2.py (모터 제어 코드)
 	    
