@@ -1,8 +1,6 @@
 import Leap, sys, math
 from Leap import *
 import socket
-from Leap import CircleGesture
-
 
 direction = "0"
 forward = "0"
@@ -10,14 +8,13 @@ forward = "0"
 total_data = ""
 
 
-host = '192.168.1.103'
-port = 5104
+host = "192.168.0.6"
+port = 5333
 buf = 2
 ADDR = (host, port)
 
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 client.connect(ADDR)
-
 
 
 class LeapMotionListener(Leap.Listener): 
@@ -30,16 +27,10 @@ class LeapMotionListener(Leap.Listener):
 
   def on_connect(self, controller):
     print "Connected"
-    controller.enable_gesture(Leap.Gesture.TYPE_CIRCLE)
-    controller.enable_gesture(Leap.Gesture.TYPE_SWIPE)
-
-    controller.config.set("Gesture.Circle.MinRadius", 10.0)
-    controller.config.set("Gesture.Circle.MinArc", .5)
-    controller.config.save()
+    
 
   def on_disconnect(self, controller):
     print "Disconnected"
-  
 
   def on_frame(self, controller):
 
@@ -50,7 +41,6 @@ class LeapMotionListener(Leap.Listener):
     global direction
     global forward
     global backward
-    global breaker
     global total_data
 
     global host
@@ -59,15 +49,6 @@ class LeapMotionListener(Leap.Listener):
     global ADDRc
 
     global client
-
-    """
-    for gesture in frame.gestures():
-      if gesture.type != Leap.Gesture.TYPE_CIRCLE :
-        print("F")
-      else:
-        circle = CircleGesture(gesture)
-        print("T")
-    """
 
     for hand in frame.hands:
 
@@ -78,39 +59,34 @@ class LeapMotionListener(Leap.Listener):
             #print "Paper"
             hand_center = hand.palm_position
             handx = hand_center.x
-            #newx = hand.palm_position.x-50
-            #newy = hand.palm_position.y-95
+
             dist = hand_center.y
 
             #not consider acc 
             if(dist<=180):
-              #print "forward"
-              forward = "0"  
-              #backward = "00"
-            elif(180<dist<=380):
-              forward = "1"  
-            elif(380<dist<=400):
-              forward = "5"
-            elif(400<dist<=520):
-              #print "backward" 
-              forward = "2"  
-              #backward = "+1" 
+              forward = "0" #print "fast forward"  
+            elif(180<dist<=350):
+              forward = "1"  #print "slow forward"
+            elif(350<dist<=360):
+              forward = "5" #print "stop region"
+            elif(360<dist<=530):
+              forward = "2"  #print "slow backward"
             else :
-              forward = "3"  
+              forward = "3"  #print "fast backward"
 
             if handx <= (-100):
-              direction = "0"
+              direction = "0"  #left left
             elif handx <= (-35):
-              direction = "1"
+              direction = "1"  #left 
             elif handx <= 35:
-              direction="2"
+              direction="2"   #center
             elif handx <= 100:
-              direction = "3"
+              direction = "3" #right
             elif handx > 100:
-              direction = "4"
+              direction = "4" #right right
 
         elif (hand.grab_strength == 1):
-            forward = "4"
+            forward = "4"      #Stop the Car
 
             hand_center = hand.palm_position
             handx = hand_center.x
@@ -125,17 +101,9 @@ class LeapMotionListener(Leap.Listener):
               direction = "3"
             elif handx > 100:
               direction = "4"
-            #newvector = Vector(newx, newy, hand.palm_position.z)
-            #roll = newvector.roll*Leap.RAD_TO_DEG
-            #roll2 = hand_center.roll
 
       total_data = forward + direction
-#      print total_data
       client.send(total_data.encode())
-      
-      
-
-
 
 def main():
     # Create a sample listener and controller
