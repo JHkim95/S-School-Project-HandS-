@@ -91,18 +91,6 @@ https://developer.leapmotion.com/sdk/v2
 
 cf.  방향 이상하면 코드 수정.
 
-**실행 방법**
-1. PuTTY로 라즈베리파이에 접속.
-2. cd Sschool/Sunfounder_Smart_Video_Car_Kit_for_RaspberryPi/server 
-3. sudo python main2.py
-4. Leap.py 실행 
-
-**How to start in Ubuntu**
-1. Install Leap SDK.
-2. $ sudo dpkg --install Leap-2.3.1+31549-x64.deb (64bit) or $ sudo dpkg --install Leap-2.3.1+31549-x86.deb (32bit)
-3. Go to /usr/bin or /usr/sbin.
-4. $ sudo leapd
-5. $ python Sample.py or $ python leapimg.py
 
 >>![example2](https://user-images.githubusercontent.com/36954727/44376796-04f7d280-a535-11e8-8414-cfaa66760738.jpeg)
 >>Success!
