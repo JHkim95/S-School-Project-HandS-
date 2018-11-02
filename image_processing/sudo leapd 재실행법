@@ -1,0 +1,3 @@
+sudo leapd 한 뒤 종료 == CTR + C  
+ps -A | grep leapd 해서 나오는 PID 번호 전부 kill --> ex) sudo kill 2397 3118 3197  
+다시 sudo leapd  
