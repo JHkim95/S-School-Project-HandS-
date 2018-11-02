@@ -34,7 +34,7 @@
   -> sudo leapd
 	    
 3. cmd(2)   
-  -> putty or ssh 로 라즈베리파이 접속(192.168.0.6 안되면 내부네트워크 확인)    
+  -> putty or ssh 로 라즈베리파이 접속(192.168.10.10 --- 고정ip)    
   -> cd Sschool/Sunfounder_Smart_Video_Car_Kit_for_RaspberryPi/server    
   -> python Smain2.py (모터 제어 코드)
 	    
